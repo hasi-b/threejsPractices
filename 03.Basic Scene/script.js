@@ -9,14 +9,14 @@ const material = new THREE.MeshBasicMaterial({color:'red'});
 const cube = new THREE.Mesh(geometry,material);
 scene.add(cube);
 //variable
-fov = 75;
+
 const sizes = {
     width: 800,
     height: 600
 };
 //camera
 
-const camera = new THREE.PerspectiveCamera(fov,sizes.width/sizes.height);
+const camera = new THREE.PerspectiveCamera(75,sizes.width/sizes.height);
 camera.position.z = 3;
 scene.add(camera);
 
