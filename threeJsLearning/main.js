@@ -27,11 +27,11 @@ const sizes = {
 
 //Light
 const light = new THREE.PointLight(0xffffff,1,100);
-light.position.set(-10,10,10);
+light.position.set(10,10,10);
 scene.add(light);
 
 //Camera
-const camera = new THREE.PerspectiveCamera(45,sizes.width/sizes.height);
+const camera = new THREE.PerspectiveCamera(45,sizes.width/sizes.height,0.1,100);
 camera.position.z = 20;
 scene.add(camera);
 
@@ -40,3 +40,13 @@ const canvas = document.querySelector('.webgl');
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
 renderer.setSize(sizes.width,sizes.height);
 renderer.render(scene,camera);
+
+//Resize
+window.addEventListener('resize',()=>{
+//Updating sizes
+  sizes.width= window.innerWidth;
+  sizes.height = window.innerHeight;
+  //Update Camera
+  camera.aspect = sizes.width,sizes.height;
+  renderer.setSize(sizes.width,sizes.height);
+})
