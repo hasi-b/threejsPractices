@@ -10,18 +10,18 @@ export default class Camera{
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
         this.createPerspectiveCamera();
-        this.createOrthographicCmaera();
+        this.createOrthographicCamera();
 
         console.log(this.experience,this.sizes,this.scene,this.canvas);
     }
 
     createPerspectiveCamera(){
-        perspectiveCamera = new THREE.PerspectiveCamera(
+        this.perspectiveCamera = new THREE.PerspectiveCamera(
             35,
             this.sizes.aspect,
             0.1,
             1000);
-            this.scene.add(perspectiveCamera);
+            this.scene.add(this.perspectiveCamera);
     }
 
     createOrthographicCamera(){
@@ -34,5 +34,19 @@ export default class Camera{
             -100,
             100);
             this.scene.add(this.orthograpchicCamera);
+    }
+
+    resize(){
+        this.perspectiveCamera.aspect = this.sizes.aspect;
+        this.perspectiveCamera.updateProjectionMatrix();
+        this.orthograpchicCamera.left = (-this.sizes.aspect*this.sizes.frustrum)/2;
+        this.orthograpchicCamera.right = (this.sizes.aspect*this.sizes.frustrum)/2;
+        this.orthograpchicCamera.top =   this.sizes.frustrum/2;
+        this.orthograpchicCamera.bottom =  -this.sizes.frustrum/2;
+        this.orthograpchicCamera.updateProjectionMatrix();
+    }
+
+    update(){
+        
     }
 }
