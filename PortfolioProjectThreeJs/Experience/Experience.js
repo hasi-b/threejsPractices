@@ -4,6 +4,9 @@ import Camera from "./Camera";
 import Renderer from "./Renderer";
 import Time from "./Utils/Time";
 import World from "./World/World";
+import Resources from "./Utils/Resources";
+import assets from "./Utils/assets";
+
 
 export default class Experience{
     static instance;
@@ -18,6 +21,7 @@ export default class Experience{
         this.sizes = new Sizes();
         this.camera = new Camera();
         this.renderer = new Renderer();
+        this.resources = new Resources(assets);
         this.world = new World();
 
         this.time.on("update",()=>{
