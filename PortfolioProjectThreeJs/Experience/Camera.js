@@ -15,7 +15,7 @@ export default class Camera{
         this.createOrthographicCamera();
         this.setOrbitControls();
 
-        console.log(this.experience,this.sizes,this.scene,this.canvas);
+      
     }
 
     createPerspectiveCamera(){
@@ -38,6 +38,13 @@ export default class Camera{
             -100,
             100);
             this.scene.add(this.orthograpchicCamera);
+            //helper code
+            const size =10;
+            const divisions =10;
+            const gridHelper = new THREE.GridHelper(size,divisions);
+            this.scene.add(gridHelper);
+            const axesHelper = new THREE.AxesHelper(10);
+            this.scene.add(axesHelper);
     }
 
     setOrbitControls(){
@@ -58,6 +65,6 @@ export default class Camera{
     }
 
     update(){
-       
+       this.controls.update();
     }
 }
