@@ -6,7 +6,8 @@ import Time from "./Utils/Time";
 import World from "./World/World";
 import Resources from "./Utils/Resources";
 import assets from "./Utils/assets";
-
+import {RenderPass} from "three/examples/jsm/postprocessing/RenderPass";
+import{EffectComposer} from "three/examples/jsm/postprocessing/EffectComposer";
 
 export default class Experience{
     static instance;
@@ -23,6 +24,9 @@ export default class Experience{
         this.renderer = new Renderer();
         this.resources = new Resources(assets);
         this.world = new World();
+        // this.renderScene = new RenderPass(this.scene,this.camera);
+        // this.composer = new EffectComposer(this.renderer);
+        // this.composer.addPass(this.renderScene);
 
         this.time.on("update",()=>{
             this.update();

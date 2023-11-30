@@ -2,6 +2,7 @@
 import Experience from "../Experience.js";
 import * as THREE from "three";
 import Environment from "./Environment.js";
+
 export default class Room{
 
     constructor(){
@@ -23,7 +24,7 @@ export default class Room{
         this.actualRoom.children.forEach(child => {
              child.castShadow = true;
              child.receiveShadow = true;
-             console.log(child);
+             
              if(child instanceof THREE.Group){
                 child.children.forEach(groupChild=>{
                     groupChild.castShadow = true;
@@ -37,9 +38,25 @@ export default class Room{
                 child.material.ior =3;
                 child.material.transmission =1;
                 child.material.opacity =1;
+               //  child.material.reflectivity = 0.2;
+               //  child.material.refractionRatio = 0.2;
              }
              if(child.name ==='Pillow'){
                 child.castShadow = false;
+             }
+             if(child.name==='Monitor_Screen002'){
+                  child.material = new THREE.MeshBasicMaterial({
+                     map:this.resources.items.video,
+                  });
+             }
+             if(child.name==='Monitor_2001'){
+               child.material = new THREE.MeshBasicMaterial({
+                  map:this.resources.items.video2,
+               });
+             }
+             if(child.name ==='Batman_Light'){
+               
+               
              }
             
         });
