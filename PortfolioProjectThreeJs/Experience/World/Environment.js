@@ -8,7 +8,7 @@ export default class Environment{
         this.scene = this.experience.scene;
         this.resources = this.experience.resources;
         this.setSunLight();
-        //this.setAreaLight();
+        this.setAreaLight();
         //this.setSpotLight();
        
   
@@ -20,7 +20,12 @@ export default class Environment{
         this.sunLight.shadow.camera.far = 20;
         this.sunLight.shadow.mapSize.set(2048,2048);
         this.sunLight.shadow.normalBias = 0.05;
-        this.sunLight.position.set(-5,10,10);
+
+
+        // const helper = new THREE.CameraHelper(this.sunLight.shadow.camera)
+        // this.scene.add(helper);
+
+        this.sunLight.position.set(5,10,10);
         this.scene.add(this.sunLight);
 
         this.ambientLight = new THREE.AmbientLight("#ffffff",1);
@@ -32,7 +37,7 @@ export default class Environment{
     this.height = 0.5;
     this.intensity = 1;
     this.rectLight = new THREE.RectAreaLight( 0xffffff, this.intensity, this.width, this.height );
-    this.rectLight.position.set( 5, 5, 0 );
+    this.rectLight.position.set( -1, 1, 1 );
     this.rectLight.lookAt( 0, 0, 0 );
     this.scene.add( this.rectLight );
     this.rectAreaLightHelperGeometry = new THREE.PlaneGeometry(this.rectLight.width, this.rectLight.height);

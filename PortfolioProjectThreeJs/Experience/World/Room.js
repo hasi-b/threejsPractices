@@ -15,6 +15,7 @@ export default class Room{
        this.actualRoom = this.room.scene;
        this.setModel();
        
+
        
   
     }
@@ -55,7 +56,12 @@ export default class Room{
                });
              }
              if(child.name ==='Batman_Light'){
-               
+               child.material = new THREE.MeshStandardMaterial({
+                  color: 0x00ff00,
+                  emissive: 0x00ff00,
+                  emissiveIntensity: 100, // Adjust the intensity as needed
+                });
+                
                
              }
             
