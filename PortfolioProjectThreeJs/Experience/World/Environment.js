@@ -1,12 +1,22 @@
 
 import Experience from "../Experience.js";
 import * as THREE from "three";
+import gsap from "gsap";
+import GUI from "lil-gui";
 export default class Environment{
 
     constructor(){
         this.experience = new Experience();     
         this.scene = this.experience.scene;
         this.resources = this.experience.resources;
+        this.gui = new GUI();
+
+        this.obj = {
+            colorSunObj:{r:0,g:0,b:0},
+            colorAmbObj:{r:0,g:0,b:0},
+            intensity :3,
+        }
+
         this.setSunLight();
         this.light= this.setAreaLight();
         this.setSecondAreaLight();
@@ -15,9 +25,19 @@ export default class Environment{
         //this.setSpotLight();
         //this.setPosterLight();
        
-  
+        this.setGUI();
     }
+    setGUI(){
+        this.gui.addColor(this.obj,"colorSunObj").onChange(()=>{
+            this.sunLight.color.copy(this.obj.colorSunObj);
+            
+        });
+        this.gui.addColor(this.obj,"colorAmbObj").onChange(()=>{
+            
+            this.ambientLight.color.copy(this.obj.colorAmbObj);
+        });
 
+    }
 
     setPosterLight(){
         // Create a spotlight
@@ -104,6 +124,38 @@ this.scene.add(spotlight);
     this.scene.add(this.spotLightHelper);
    }
 
+
+   switchTheme(theme){
+    if(theme ==="dark" ){
+        gsap.to(this.sunLight.color,{
+            r:0/255,
+            g:0/255,
+            b:0/255,
+            
+        });
+        gsap.to(this.ambientLight.color,{
+            r:0/255,
+            g:0/255,
+            b:0/255,
+            
+        });
+      
+    }
+    else{
+        gsap.to(this.sunLight.color,{
+            r:255/255,
+            g:255/255,
+            b:255/255,
+            
+        });
+        gsap.to(this.ambientLight.color,{
+            r:255/255,
+            g:255/255,
+            b:255/255,
+            
+        });
+    }
+    }
     resize(){
        
     }

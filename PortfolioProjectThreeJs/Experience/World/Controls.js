@@ -11,11 +11,12 @@ export default class Controls{
         this.experience = new Experience();     
         this.scene = this.experience.scene;
         this.sizes = this.experience.sizes;
-
+        this.resources = this.experience.resources;
         this.time = this.experience.time;
         this.camera = this.experience.camera;
-        this.resources = this.experience.resources;
+      
         this.room = this.experience.world.room.actualRoom;
+        
         gsap.registerPlugin(ScrollTrigger);
         this.setPath();
         // this.progress =0;
