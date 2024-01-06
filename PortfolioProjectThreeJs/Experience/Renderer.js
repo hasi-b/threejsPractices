@@ -16,10 +16,10 @@ export default class Renderer{
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
         this.camera = this.experience.camera;
-        console.log(this.camera,this.camera.perspectiveCamera);
+        
         this.setRenderer();
 
-        this.renderScene = new RenderPass(this.scene,this.camera.perspectiveCamera);
+        this.renderScene = new RenderPass(this.scene,this.camera.orthograpchicCamera);
         this.composer = new EffectComposer(this.renderer);
         this.composer.addPass(this.renderScene);
         this.bloomPass = new UnrealBloomPass(
@@ -104,12 +104,21 @@ export default class Renderer{
     }
 
     update(){
-        //this.renderer.render(this.scene,this.camera.perspectiveCamera);
-        console.log("s"+this.materials);
-        this.scene.traverse(this.nonBloomed);
-        this.composer.render();
-        this.scene.traverse(this.restoreMaterial);
-        this.finalComposer.render();
+
+        // this.renderer.setViewport(0,0,this.sizes.width,this.sizes.height);
+
+        this.renderer.render(this.scene,this.camera.orthograpchicCamera);
+      
+       // this.scene.traverse(this.nonBloomed);
+        //this.composer.render();
+       // this.scene.traverse(this.restoreMaterial);
+        //this.finalComposer.render();
+        // this.renderer.setScissorTest(true);
+        // this.renderer.setViewport(this.sizes.width-this.sizes.width/3,this.sizes.height-this.sizes.height/3,this.sizes.width/3,this.sizes.height/3);
+        // this.renderer.setScissor(this.sizes.width-this.sizes.width/3,this.sizes.height-this.sizes.height/3,this.sizes.width/3,this.sizes.height/3);
+        // this.renderer.render(this.scene,this.camera.perspectiveCamera);
+        // this.renderer.setScissorTest(false);
+        
     }
 
     setRenderer(){

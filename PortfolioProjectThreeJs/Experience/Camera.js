@@ -37,22 +37,29 @@ export default class Camera{
             (this.sizes.aspect*this.sizes.frustrum)/2,
             this.sizes.frustrum/2,
             -this.sizes.frustrum/2,
-            -10,
-            10);
+            -50,
+            50);
+            this.orthograpchicCamera.position.y = 0.1;
+            this.orthograpchicCamera.position.z = 0.5;
+            
+            this.orthograpchicCamera.rotation.x = -Math.PI/6;
+            
+            
+
             this.scene.add(this.orthograpchicCamera);
 
-            this.helper = new THREE.CameraHelper(this.orthograpchicCamera)
-            this.scene.add(this.helper);
+            // this.helper = new THREE.CameraHelper(this.orthograpchicCamera)
+            // this.scene.add(this.helper);
 
 
             this.scene.add(this.orthograpchicCamera);
             //helper code
             const size =20;
             const divisions =20;
-            const gridHelper = new THREE.GridHelper(size,divisions);
-            this.scene.add(gridHelper);
-            const axesHelper = new THREE.AxesHelper(10);
-            this.scene.add(axesHelper);
+            // const gridHelper = new THREE.GridHelper(size,divisions);
+             //this.scene.add(gridHelper);
+             //const axesHelper = new THREE.AxesHelper(10);
+             //this.scene.add(axesHelper);
     }
 
     setOrbitControls(){
@@ -75,9 +82,9 @@ export default class Camera{
     update(){
        
        this.controls.update();
-       this.helper.matrixWorldNeedsUpdate = true;
-       this.helper.update();
-       this.helper.position.copy(this.orthograpchicCamera.position);
-       this.helper.rotation.copy(this.orthograpchicCamera.rotation);
-    }
+        //this.helper.matrixWorldNeedsUpdate = true;
+        //this.helper.update();
+        //this.helper.position.copy(this.orthograpchicCamera.position);
+        //this.helper.rotation.copy(this.orthograpchicCamera.rotation);
+    }//
 }

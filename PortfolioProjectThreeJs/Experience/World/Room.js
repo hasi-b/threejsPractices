@@ -2,7 +2,7 @@
 import Experience from "../Experience.js";
 import * as THREE from "three";
 import Environment from "./Environment.js";
-
+import gsap from "gsap";
 export default class Room{
 
     constructor(){
@@ -13,12 +13,29 @@ export default class Room{
 
        this.room = this.resources.items.hasibRoom;
        this.actualRoom = this.room.scene;
-       this.setModel();
-       
-
+      
+       this.lerp={
+         current:0,
+         target:0,
+         ease:0.1,
+     }
+     this.setModel();
+     this.OnMouseMove();
        
   
     }
+
+
+   OnMouseMove(){
+      window.addEventListener("mousemove",(e)=>{
+  
+         this.rotation = ((e.clientX-window.innerWidth/2)*2)/window.innerWidth;
+         this.lerp.target = this.rotation*0.05;
+
+      });
+
+
+   }
 
    setModel(){
        
@@ -49,16 +66,18 @@ export default class Room{
                   child.material = new THREE.MeshBasicMaterial({
                      map:this.resources.items.video,
                   });
+                  child.castShadow= false;
              }
              if(child.name==='Monitor_2001'){
                child.material = new THREE.MeshBasicMaterial({
                   map:this.resources.items.video2,
                });
+               child.castShadow= false;
              }
              if(child.name ==='Batman_Light'){
                child.material = new THREE.MeshStandardMaterial({
-                  color: 0x00ff00,
-                  emissive: 0x00ff00,
+                  color: 0x5A5A5A,
+                  
                   emissiveIntensity: 100, // Adjust the intensity as needed
                 });
                 
@@ -68,8 +87,8 @@ export default class Room{
         });
 
         this.scene.add(this.actualRoom);
-        this.actualRoom.scale.set(0.09,0.09,0.09);
-        this.actualRoom.position.set(0,-1,0);
+        this.actualRoom.scale.set(0.06,0.06,0.06);
+        this.actualRoom.position.set(-.07,-1,0);
         this.actualRoom.rotation.y = Math.PI*2;
    }
 
@@ -78,7 +97,14 @@ export default class Room{
     }
 
     update(){
-     
+      this.lerp.current = gsap.utils.interpolate(
+         this.lerp.current,
+         this.lerp.target,
+         this.lerp.ease
+     );
+
+this.actualRoom.rotation.y = this.lerp.current;
+
     }
 
    
