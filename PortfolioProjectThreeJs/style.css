@@ -11,14 +11,53 @@
 
 html,body{
   font-family: "Montserrat",sans-serif;
-  color: var(--text-black);
+  color: var(--text-color);
+}
+
+h1,section,p,span,svg{
+  transition: background-color 0.35s,color 0.35s;
 }
 
 :root{
-  --text-black : rgba(32, 32, 32, 0.856);
-  --primary-color: rgb(105, 198, 220);
-  --primary-violet: rgb(162, 106, 253);
+  --text-black : #202020da;
+  --primary-color: #69c6dc;
+  --primary-violet: #a26afd;
+  /* Light theme */
+  --colortext-light : #202020da;
+  --colortext-dark : rgb(197, 246, 255);
+  --color-background--light :rgb(105, 198, 220) ;
+  --sectionGradientFirst-light:#93c7d996;
+  --sectionGradientSecond-light:#f4ea8c93;
+  --sectionGradientFirst-dark:#000000be;
+  --sectionGradientSecond-dark:#000000ad;
+  --circle-buttonColor-light : #91C7D9;
+  --circle-buttonColor-Dark : #181818;
+  --progessbarColor-dark: #930000;
+  --progessbarColor-light: #4090BB;
+  /*DarkTheme  */
 }
+
+
+
+.light-theme{
+--text-color: var(--colortext-light);
+--section-Color--first:var(--sectionGradientFirst-light);
+--section-Color--second:var(--sectionGradientSecond-light);
+--circle-button : var(--circle-buttonColor-light);
+--circle-fill : var(--colortext-light);
+--progressbarColor:var(--progessbarColor-light)
+
+}
+.dark-theme{
+--text-color: var(--colortext-dark);
+--section-Color--first:var(--sectionGradientFirst-dark);
+--section-Color--second:var(--sectionGradientSecond-dark);
+--circle-button : var(--circle-buttonColor-Dark);
+
+--circle-fill : var(--colortext-dark);
+--progressbarColor:var(--progessbarColor-dark)
+}
+
 
 /*Experiene */
 .experience{
@@ -59,6 +98,7 @@ overflow: hidden;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  fill: var(--text-color);
 }
 
 .toggle-button{
@@ -71,7 +111,7 @@ overflow: hidden;
  flex-direction: row;
  justify-content: center;
  align-items: center;
- background-color: rgb(0, 217, 255);
+ background-color: var(--circle-fill);
  border-radius: 999px;
  margin: 0px 16px;
  border: none;
@@ -83,7 +123,7 @@ left: 6px;
 border-radius: 50%;
 width: 20px;
 height: 20px;
-background-color: rgba(0, 0, 0, 0.432);
+background-color: var(--circle-button);
 transition: all 0.2s ease-in-out;
 
 
@@ -103,23 +143,59 @@ transition: all 0.2s ease-in-out;
 }
 
 .section{
+  position: relative;
   width: 50%;
-  padding: 100px 4%;
+  padding: 400px 4%;
   margin: 0;
-  background-color: var(--primary-color);
+  backdrop-filter: blur(5px);
+  background: linear-gradient(to bottom, var(--section-Color--first), var(--section-Color--second));
+  overflow: hidden;
 }
 
-.Left{
+.left{
   margin-right: auto;
+  border-top-right-radius: 700px 700px;
+  border-bottom-right-radius: 0px 0px;
 }
 .right{
   margin-left: auto;
+  border-top-left-radius: 700px 700px;
+  border-bottom-left-radius: 0px 0px;
 }
+
+
+.progress-wrapper{
+  height: 0;
+  width: 12px;
+  z-index: 9999;
+
+}
+.progress-bar-wrapper-left{
+position: absolute;
+top: 0;
+left: 0;
+
+}
+.progress-bar-wrapper-right{
+  position: absolute;
+  top: 0;
+  right: 0;
+  
+  }
+
+.progress-bar{
+  height: 100vh;
+  width: 100%;
+  background-color:   var(--progressbarColor);
+  transform-origin: top center;
+  transform: scaleY(1);
+}
+
 
 .section-intro-wrapper{
   position: relative;
   padding: 20% 5%;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid var(--text-color);
   padding-bottom: 300px;
 }
 
@@ -142,7 +218,7 @@ transition: all 0.2s ease-in-out;
 .section-title{
 
   position: relative;
-  color: var(--text-black);
+  color: var(--text-color);
 }
 
 .section-title-text{
@@ -165,7 +241,7 @@ transition: all 0.2s ease-in-out;
   width: 100%;
   max-width: 278px;
   height: 60px;
-  border: 1px solid var(--primary-violet);
+  border: 1px solid var(--text-color);
   transform-origin:left ;
   transform: skewY(-15deg);
 }
@@ -180,7 +256,7 @@ transition: all 0.2s ease-in-out;
 .styleThree{
   top: 80px;
   transform: skewY(15deg);
-  background-color: var(--primary-violet);
+  background-color: var(--text-color);
 }
 
 .section-number{
@@ -222,4 +298,16 @@ transition: all 0.2s ease-in-out;
 .hero-second-subheading{
   font-size: 32px;
   text-transform: uppercase;
+}
+
+@media (max-width:968px){
+  .section{
+    width: 100%;
+  }
+  .progress-bar-wrapper-left{
+    
+    right: 0;
+    left: auto;
+    
+    }
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
-  <body>
+  <body class="light-theme">
     <div class="experience">
       <canvas class="experience-canvas"></canvas>
     </div>
@@ -38,7 +38,7 @@
 			}
 
 		</script>
-		<div class="page">
+		<div class="page" asscroll-container>
 			<div class="toggle-bar">
 				<div class="sun-wrapper">
 					<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M450.001-751.538v-147.691h59.998v147.691h-59.998Zm242.921 100.769-41.153-41.153L754.922-798.46l42.538 43.153-104.538 104.538Zm58.616 200.768v-59.998h147.691v59.998H751.538ZM450.001-60.771v-147.307h59.998v147.307h-59.998ZM267.847-652.385 161.54-754.922l43.538-42.153 104.537 104.153-41.768 40.537Zm486.46 490.845L651.769-268.078l40.538-40.153 104.768 101.923-42.768 44.768ZM60.771-450.001v-59.998h147.691v59.998H60.771ZM204.693-161.54l-41.768-43.538 103.153-103.153 21.692 20.461 22.076 21.077L204.693-161.54Zm275.398-98.461q-91.629 0-155.859-64.14-64.231-64.14-64.231-155.768 0-91.629 64.14-155.859 64.14-64.231 155.768-64.231 91.629 0 155.859 64.14 64.231 64.14 64.231 155.768 0 91.629-64.14 155.859-64.14 64.231-155.768 64.231ZM480-320q66 0 113-47t47-113q0-66-47-113t-113-47q-66 0-113 47t-47 113q0 66 47 113t113 47Zm0-160Z"/></svg>
@@ -48,11 +48,11 @@
 
 					</div>
 				</button>
-				<div class="moon-wrapper">
+				<div class="moon-wrapper" >
 					<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M481.154-140.001q-141.666 0-240.832-99.167Q141.155-338.334 141.155-480q0-135.768 92.115-232.883 92.114-97.115 225.575-105.192 8.615 0 16.922.615t16.307 1.846q-30.615 28.615-48.768 69.153-18.154 40.539-18.154 86.461 0 98.334 68.834 167.168 68.834 68.833 167.168 68.833 46.538 0 86.768-18.153 40.23-18.153 68.461-48.768 1.231 8 1.846 16.307.616 8.307.616 16.922-7.693 133.461-104.808 225.575-97.115 92.115-232.883 92.115Zm0-59.999q88 0 158-48.5t102-126.5q-20 5-40 8t-40 3q-123 0-209.5-86.5t-86.5-209.5q0-20 3-40t8-40q-78 32-126.5 102t-48.5 158q0 116 82 198t198 82Zm-10-270Z"/></svg>
 				</div>
 			</div>
-			<div class="page-wrapper">
+			<div class="page-wrapper" asscroll>
 			  <section class="hero">
 				<div class="hero-wrapper">
 	  
@@ -70,6 +70,9 @@
 			  </section>
 			  <div class="first-move section-margin"></div>
 			  <section class="first-section section left">
+				<div class="progress-wrapper progress-bar-wrapper-left">
+					<div class="progress-bar"></div>
+				</div>
 				<div class="section-intro-wrapper">
 			  <h1 class="section-title">
 				<span class="section-title-text">About Me</span>
@@ -89,8 +92,11 @@
 			</div>
 			</section>
 			
-			<div class="section-margin"></div>
+			<div class="second-move section-margin"></div>
 			<section class="second-section section right">
+				<div class="progress-wrapper progress-bar-wrapper-right">
+					<div class="progress-bar blue-background"></div>
+				</div>
 				<div class="section-intro-wrapper">
 			  <h1 class="section-title">
 				<span class="section-title-text">My work</span>
@@ -109,6 +115,40 @@
 				<p class="section-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem perspiciatis esse aliquid quidem tempore odio quis consequuntur deleniti, illo quibusdam deserunt voluptatem non dolor, corporis iste sapiente. Deserunt, quas esse.</p>
 			</div>
 			</section>
+
+			<div class="third-move section-margin"></div>
+
+
+
+
+			<section class="third-section section left">
+				<div class="progress-wrapper progress-bar-wrapper-left">
+					<div class="progress-bar green-background"></div>
+				</div>
+			  <div class="section-intro-wrapper">
+			<h1 class="section-title">
+			  <span class="section-title-text">Contact</span>
+			  <div class="section-title-decoration styleOne"></div>
+			  <div class="section-title-decoration styleTwo"></div>
+			  <div class="section-title-decoration styleThree"></div>
+			</h1>
+		  </div>
+			<span class="section-number"></span>
+			<div class="section-detail-wrapper">
+			  <h3 class="section-heading">Lorem</h3>
+			  <p class="section-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem perspiciatis esse aliquid quidem tempore odio quis consequuntur deleniti, illo quibusdam deserunt voluptatem non dolor, corporis iste sapiente. Deserunt, quas esse.</p>
+			  <h3 class="section-heading">Lorem </h3>
+			  <p class="section-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem perspiciatis esse aliquid quidem tempore odio quis consequuntur deleniti, illo quibusdam deserunt voluptatem non dolor, corporis iste sapiente. Deserunt, quas esse.</p>
+			  <h3 class="section-heading">Lorem</h3>
+			  <p class="section-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem perspiciatis esse aliquid quidem tempore odio quis consequuntur deleniti, illo quibusdam deserunt voluptatem non dolor, corporis iste sapiente. Deserunt, quas esse.</p>
+		  </div>
+		  </section>
+
+
+
+
+
+
 			</div>
 		  </div>
     <script type="module" src="/main.js"></script>

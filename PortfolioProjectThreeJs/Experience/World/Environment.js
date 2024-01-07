@@ -9,32 +9,64 @@ export default class Environment{
         this.experience = new Experience();     
         this.scene = this.experience.scene;
         this.resources = this.experience.resources;
-        this.gui = new GUI();
+        //this.gui = new GUI();
 
         this.obj = {
             colorSunObj:{r:0,g:0,b:0},
             colorAmbObj:{r:0,g:0,b:0},
-            intensity :3,
+            Sunintensity :3,
+            Ambintensity:3,
+            areaLightobj:{r:0,g:0,b:0},
+            areaSecondLightobj:{r:0,g:0,b:0},
+            areaLightIntensity:3,
+            areaSecondLightIntensity:3,
+
         }
 
         this.setSunLight();
         this.light= this.setAreaLight();
         this.setSecondAreaLight();
         this.offset = new THREE.Vector3();
-        
+        this.currentTheme;
         //this.setSpotLight();
         //this.setPosterLight();
        
-        this.setGUI();
+        //this.setGUI();
     }
     setGUI(){
         this.gui.addColor(this.obj,"colorSunObj").onChange(()=>{
+           
             this.sunLight.color.copy(this.obj.colorSunObj);
             
         });
+        this.gui.add(this.obj,"Sunintensity",0,100).onChange(()=>{
+            this.sunLight.intensity = this.obj.Sunintensity;
+        });
         this.gui.addColor(this.obj,"colorAmbObj").onChange(()=>{
-            
+           
             this.ambientLight.color.copy(this.obj.colorAmbObj);
+        });
+        this.gui.add(this.obj,"Ambintensity",0,100).onChange(()=>{
+            this.ambientLight.intensity = this.obj.Ambintensity;
+        });
+        this.gui.addColor(this.obj,"areaLightobj").onChange(()=>{
+            
+            this.rectLight.color.copy(this.obj.areaLightobj);
+            
+        });
+
+        this.gui.add(this.obj,"areaLightIntensity",0,100).onChange(()=>{
+            this.rectLight.intensity = this.obj.areaLightIntensity;
+        });
+
+        this.gui.addColor(this.obj,"areaSecondLightobj").onChange(()=>{
+            console.log(this.rectLightSecond.color);
+            this.rectLightSecond.color.copy(this.obj.areaSecondLightobj);
+         
+            
+        });
+        this.gui.add(this.obj,"areaSecondLightIntensity",0,100).onChange(()=>{
+            this.rectLightSecond.intensity = this.obj.areaSecondLightIntensity;
         });
 
     }
@@ -97,7 +129,7 @@ this.scene.add(spotlight);
     this.width = 1;
     this.height = 0.5;
     this.intensity = 40;
-    this.rectLightSecond = new THREE.RectAreaLight(0xe600ac , this.intensity, this.width, this.height );
+    this.rectLightSecond = new THREE.RectAreaLight(0xBF40BF , this.intensity, this.width, this.height );
   
     this.rectLightSecond.position.set( 4, 1, 1.5 );
     this.rectLightSecond.lookAt( 0, 0, 0 );
@@ -126,6 +158,7 @@ this.scene.add(spotlight);
 
 
    switchTheme(theme){
+    this.currentTheme = theme;
     if(theme ==="dark" ){
         gsap.to(this.sunLight.color,{
             r:0/255,
@@ -139,6 +172,17 @@ this.scene.add(spotlight);
             b:0/255,
             
         });
+        gsap.to(this.rectLight.color,{
+            r: 0.027450980392156862, 
+            g: 0.1450980392156863, 
+            b: 0.27450980392156865
+        });
+        gsap.to(this.rectLightSecond.color,{
+            r: 0.3568627450980392, 
+            g: 0.00392156862745098, 
+            b: 0.00392156862745098
+        });
+        
       
     }
     else{
@@ -149,10 +193,19 @@ this.scene.add(spotlight);
             
         });
         gsap.to(this.ambientLight.color,{
-            r:255/255,
-            g:255/255,
-            b:255/255,
-            
+            r: 0.010329823026364548,
+            g: 0.5647115056965487, 
+            b: 1
+        });
+        gsap.to(this.rectLight.color,{
+            r: 1, 
+            g: 0.651405637412793, 
+            b: 0
+        });
+        gsap.to(this.rectLightSecond.color,{
+            r: 0.7912979403281553,
+            g: 0, 
+            b: 0.41254261347374327
         });
     }
     }

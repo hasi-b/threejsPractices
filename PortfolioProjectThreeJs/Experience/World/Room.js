@@ -3,6 +3,7 @@ import Experience from "../Experience.js";
 import * as THREE from "three";
 import Environment from "./Environment.js";
 import gsap from "gsap";
+import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
 export default class Room{
 
     constructor(){
@@ -19,6 +20,7 @@ export default class Room{
          target:0,
          ease:0.1,
      }
+     this.light;
      this.setModel();
      this.OnMouseMove();
        
@@ -38,7 +40,7 @@ export default class Room{
    }
 
    setModel(){
-       
+ 
         this.actualRoom.children.forEach(child => {
              child.castShadow = true;
              child.receiveShadow = true;
@@ -83,13 +85,50 @@ export default class Room{
                 
                
              }
+             if(child.name==="Room_Cube" || child.name==="Room_Cube004"){
+               child.position.x = 10;
+               child.position.z=5;
+             }
+
+             if(child.name==="Sketchfab_model"){
+               
+               
+               child.scale.set(0,0,0);
+             }
+             if( child.name==="Comic"){
+               child.position.set(-4,15.45,36.5);
+               
+               child.scale.set(0,0,0);
+             }
             
         });
+
+        const width = 1.2;
+        const height = 0.45;
+        const intensity =1;
+        const rectLight = new THREE.RectAreaLight( 0xF4E98C, intensity,  width, height );
+        
+        rectLight.position.set( 10,
+         25.57,
+         8);
+       // rectLight.rotation.z = Math.PI/2;
+        rectLight.rotation.y = -Math.PI/4.5;
+        
+        
+         
+        this.actualRoom.add( rectLight );
+        
+
+        const rectLightHelper = new RectAreaLightHelper( rectLight );
+        //rectLight.add( rectLightHelper )
+
+
 
         this.scene.add(this.actualRoom);
         this.actualRoom.scale.set(0.06,0.06,0.06);
         this.actualRoom.position.set(-.07,-1,0);
         this.actualRoom.rotation.y = Math.PI*2;
+        this.light = rectLight;
    }
 
     resize(){

@@ -28,6 +28,7 @@ export default class World{
         
         this.theme.on("switch",(theme)=>{
             this.switchTheme(theme);
+           
 
         });
     }

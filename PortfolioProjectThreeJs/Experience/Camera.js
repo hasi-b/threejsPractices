@@ -44,7 +44,7 @@ export default class Camera{
             
             this.orthograpchicCamera.rotation.x = -Math.PI/6;
             
-            
+           
 
             this.scene.add(this.orthograpchicCamera);
 
@@ -82,6 +82,7 @@ export default class Camera{
     update(){
        
        this.controls.update();
+       
         //this.helper.matrixWorldNeedsUpdate = true;
         //this.helper.update();
         //this.helper.position.copy(this.orthograpchicCamera.position);
