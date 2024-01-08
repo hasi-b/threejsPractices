@@ -14,6 +14,7 @@ export default class Room{
 
        this.room = this.resources.items.hasibRoom;
        this.actualRoom = this.room.scene;
+       this.roomChildren = {};
       
        this.lerp={
          current:0,
@@ -21,12 +22,25 @@ export default class Room{
          ease:0.1,
      }
      this.light;
+     this.setCube();
      this.setModel();
      this.OnMouseMove();
        
   
     }
+    
+   setCube(){
+    const geometry = new THREE.BoxGeometry(0.15,0.15,0.15);
+    const material = new THREE.MeshStandardMaterial({ color: new THREE.Color(0.188, 0.22, 0.227) }); // black color
+    const cube = new THREE.Mesh(geometry, material);
 
+    cube.castShadow = true; // enable casting shadow
+    cube.position.set(0,-0.9,0);
+    cube.rotation.y =Math.PI/4
+    this.scene.add(cube);
+    this.roomChildren ['cubeLoader'] = cube;
+    
+   }
 
    OnMouseMove(){
       window.addEventListener("mousemove",(e)=>{
@@ -101,12 +115,18 @@ export default class Room{
                child.scale.set(0,0,0);
              }
             
+
+             child.scale.set(0,0,0);
+
+             this.roomChildren [child.name] = child;
+             
+
         });
 
         const width = 1.2;
         const height = 0.45;
         const intensity =1;
-        const rectLight = new THREE.RectAreaLight( 0xF4E98C, intensity,  width, height );
+        const rectLight = new THREE.RectAreaLight( 0xF4E98C, intensity,  0, 0 );
         
         rectLight.position.set( 10,
          25.57,
@@ -117,6 +137,8 @@ export default class Room{
         
          
         this.actualRoom.add( rectLight );
+        rectLight.scale.set(0,0,0);
+        this.roomChildren ['rectLight'] = rectLight;
         
 
         const rectLightHelper = new RectAreaLightHelper( rectLight );

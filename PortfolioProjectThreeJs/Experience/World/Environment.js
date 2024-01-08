@@ -182,6 +182,16 @@ this.scene.add(spotlight);
             g: 0.00392156862745098, 
             b: 0.00392156862745098
         });
+        gsap.to(this.experience.world.room.roomChildren['cubeLoader'].material.color,{
+            //  r: 0.9725490196078431, 
+            //  g: 0.9803921568627451, 
+            //  b: 0.8980392156862745
+           r:148/255,
+           g:235/255,
+           b:235/255
+        });
+
+
         
       
     }
@@ -206,6 +216,11 @@ this.scene.add(spotlight);
             r: 0.7912979403281553,
             g: 0, 
             b: 0.41254261347374327
+        });
+         gsap.to(this.experience.world.room.roomChildren['cubeLoader'].material.color,{
+            r: 48/255, 
+            g: 56/255, 
+            b: 58/255
         });
     }
     }

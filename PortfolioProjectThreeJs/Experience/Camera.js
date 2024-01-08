@@ -39,7 +39,7 @@ export default class Camera{
             -this.sizes.frustrum/2,
             -50,
             50);
-            this.orthograpchicCamera.position.y = 0.1;
+            this.orthograpchicCamera.position.y = -0.6;//change 0.1
             this.orthograpchicCamera.position.z = 0.5;
             
             this.orthograpchicCamera.rotation.x = -Math.PI/6;

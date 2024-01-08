@@ -7,9 +7,10 @@ import Environment from "./Environment.js";
 import Floor from "./Floor.js";
 
 
-export default class World{
+export default class World extends EventEmitter{
 
     constructor(){
+        super();
         this.experience = new Experience();
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
@@ -17,11 +18,14 @@ export default class World{
         this.camera = this.experience.camera;
         this.resources = this.experience.resources;
         this.theme = this.experience.theme;
+       
         this.resources.on("ready",()=>{
             this.environment = new Environment();
             this.room = new Room();
             this.floor = new Floor();
-            this.controls = new Controls();
+            
+            //this.controls = new Controls();
+            this.emit("worldready");
             
 
         });

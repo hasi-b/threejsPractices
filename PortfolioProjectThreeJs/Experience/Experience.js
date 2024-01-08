@@ -7,6 +7,8 @@ import Time from "./Utils/Time";
 import World from "./World/World";
 import Resources from "./Utils/Resources";
 import assets from "./Utils/assets";
+import Preloader from "./Preloader";
+import Controls from "./World/Controls";
 
 
 export default class Experience{
@@ -25,7 +27,14 @@ export default class Experience{
         this.resources = new Resources(assets);
         this.theme = new Theme();
         this.world = new World();
+        this.preloader = new Preloader();
        
+       this.preloader.on("enablecontrols",()=>{
+            this.Controls= new Controls();
+            console.log("control back");
+
+
+       });
 
         this.time.on("update",()=>{
             this.update();
@@ -45,7 +54,7 @@ export default class Experience{
     }
     
     update(){
-
+        this.preloader.update();
         this.camera.update();
         
         this.renderer.update();
