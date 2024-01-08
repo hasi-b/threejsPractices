@@ -22,6 +22,8 @@ export default class Resources extends EventEmitter{
 
        
 
+       
+
     }
     setLoaders(){
         this.loaders = {};
