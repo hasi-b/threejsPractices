@@ -38,7 +38,7 @@ export default class Room {
    }
 
    setAudio() {
-      this.batman = "public/models/Audio/Batman.mp3";
+      this.batman = "/models/Audio/Batman.mp3";
    }
    playAudio(audioFilePath) {
          this.audioLoader.load(audioFilePath, function (buffer) {
