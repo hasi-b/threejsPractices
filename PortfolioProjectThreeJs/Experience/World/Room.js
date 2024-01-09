@@ -33,6 +33,8 @@ export default class Room {
       this.setModel();
       this.OnMouseMove();
       this.setRaycast();
+      //this.swim();
+      //this.floatAndCircle();
 
 
    }
@@ -101,6 +103,37 @@ export default class Room {
 
 
    }
+
+
+   swim() {
+      this.initPos = this.roomChildren["Tetra_Fish"].position.y;
+    gsap.to(this.roomChildren["Tetra_Fish"].position, {
+        y: this.initPos + 0.2,
+        duration: 1,
+        yoyo: true, // Yoyo effect for the floating animation
+        repeat: -1, // Infinite repeat
+        ease: 'power1.inOut',
+    });
+
+    
+}
+
+floatAndCircle() {
+    const floatHeight = 0.2; // Adjust the float height as needed
+    const circleRadius = 0.1; // Adjust the circle radius as needed
+   this.initPosfloat = this.roomChildren["Tetra_Fish"].position;
+    gsap.to(this.roomChildren["Tetra_Fish"].position, {
+        y: this.initPosfloat + floatHeight,
+        x: this.initPosfloat + circleRadius,
+        duration: 1,
+        yoyo: true,
+        repeat: -1,
+        ease: 'power1.inOut',
+        onComplete: () => {
+            floatAndCircle();
+        },
+    });
+}
 
 
 
