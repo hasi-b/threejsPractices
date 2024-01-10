@@ -33,7 +33,7 @@ export default class Room {
       this.setModel();
       this.OnMouseMove();
       this.setRaycast();
-      //this.swim();
+      this.swim();
       //this.floatAndCircle();
 
 
@@ -108,8 +108,8 @@ export default class Room {
    swim() {
       this.initPos = this.roomChildren["Tetra_Fish"].position.y;
     gsap.to(this.roomChildren["Tetra_Fish"].position, {
-        y: this.initPos + 0.2,
-        duration: 1,
+        y: this.initPos + 0.3,
+        duration: 3,
         yoyo: true, // Yoyo effect for the floating animation
         repeat: -1, // Infinite repeat
         ease: 'power1.inOut',
