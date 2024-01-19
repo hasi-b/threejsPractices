@@ -27,10 +27,18 @@ h2,section,p,span,svg{
   --colortext-light : #202020da;
   --colortext-dark : rgb(197, 246, 255);
   --color-background--light :rgb(105, 198, 220) ;
-  --sectionGradientFirst-light:#93c7d996;
-  --sectionGradientSecond-light:#f4ea8c93;
+  --sectionFirstGradientFirst-light:#93C7D9;
+  --sectionFirstGradientSecond-light:#A4CCDA;
+  --sectionSecondGradientFirst-light:#2FB6AD;
+  --sectionSecondGradientSecond-light:#52CFB1;
+  --sectionThirdGradientFirst-light:#2FB6AD;
+  --sectionThirdGradientSecond-light:#52CFB1;
   --sectionGradientFirst-dark:#000000be;
   --sectionGradientSecond-dark:#000000ad;
+  --sectionSecondGradientFirst-dark:#000000be;
+  --sectionSecondGradientSecond-dark:#000000ad;
+  --sectionThreeGradientFirst-dark:#000000be;
+  --sectionThreeGradientSecond-dark:#000000ad;
   --circle-buttonColor-light : #91C7D9;
   --circle-buttonColor-Dark : #181818;
   --progessbarColor-dark: #5544a5d8;
@@ -44,8 +52,8 @@ h2,section,p,span,svg{
 
 .light-theme{
 --text-color: var(--colortext-light);
---section-Color--first:var(--sectionGradientFirst-light);
---section-Color--second:var(--sectionGradientSecond-light);
+--section-Color--first:var(--sectionFirstGradientFirst-light);
+--section-Color--second:var(--sectionFirstGradientSecond-light);
 --circle-button : var(--circle-buttonColor-light);
 --circle-fill : var(--colortext-light);
 --progressbarColor:var(--progessbarColor-light);
@@ -251,9 +259,19 @@ transition: all 0.2s ease-in-out;
   padding: 400px 4%;
   margin: 0;
   backdrop-filter: blur(5px);
-  background: linear-gradient(to bottom, var(--section-Color--first), var(--section-Color--second));
+  
   overflow: hidden;
 }
+.first-section{
+background: linear-gradient(to bottom, var(--section-Color--first), var(--section-Color--second));
+}
+.second-section{
+background: linear-gradient(to bottom, var(--section-Color--first), var(--section-Color--second));
+}
+.third-section{
+background: linear-gradient(to bottom, var(--section-Color--first), var(--section-Color--second));
+}
+
 
 .left{
   margin-right: auto;
@@ -367,9 +385,57 @@ left: 0;
   top: 4500px;
   right: calc(50% + 30px);
   color: black;
-  font-size:  24px;;
+  font-size:  24px;
 
 }
+.centered-image {
+     transform: scale(0.4);
+}
+
+.card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+          
+          transform: scale(.95);
+            width: 150vw;
+            height: 50vh;
+            margin: 10px;
+            backdrop-filter: blur(5px);
+            background: linear-gradient(to bottom, var(--section-Color--first), var(--section-Color--second));
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card-description {
+            margin-top: 10px;
+            color: #666;
+        }
+
 
 .hero{
   width: 100vw;

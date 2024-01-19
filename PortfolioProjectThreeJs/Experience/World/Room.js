@@ -55,19 +55,41 @@ export default class Room {
       const pointer = new THREE.Vector2();
       const raycaster = new THREE.Raycaster();
       
-      // window.addEventListener("mousemove",(event)=>{
-      //    pointer.x = (event.clientX/window.innerWidth)*2 -1;
-      //    pointer.y = -(event.clientY/window.innerHeight)*2+1;
-      //    raycaster.setFromCamera(pointer,this.experience.camera.orthograpchicCamera);
-      //    const intersects = raycaster.intersectObjects(this.scene.children);
-      //    if(intersects.length>0){
-      //      // this.experience.renderer.outlinePass.selectedObjects = intersects[0].object;
+      //  window.addEventListener("mousemove",(event)=>{
+      //     pointer.x = (event.clientX/window.innerWidth)*2 -1;
+      //     pointer.y = -(event.clientY/window.innerHeight)*2+1;
+      //     raycaster.setFromCamera(pointer,this.experience.camera.orthograpchicCamera);
+      //     const intersects = raycaster.intersectObjects(this.scene.children);
+      //     document.body.style.cursor = 'auto';
+      //     if(intersects.length>0){
+      //       if (intersects[0].object.name === "Batman-black" || intersects[0].object.name === "Batman_Light") {
+      //           console.log("ssssss");
+      //           document.body.style.cursor = 'pointer';
+      //       }
+      //       if (intersects[0].object.name === "Poster_Frame_1" || intersects[0].object.name === "Poster_1") {
+      //           document.body.style.cursor = 'pointer';
+      //       }
+      //       if (intersects[0].object.name === "Poster_Frame_2" || intersects[0].object.name === "Poster_2") {
+      //          document.body.style.cursor = 'pointer';
+      //       }
+      //       if (intersects[0].object.name === "Poster_Frame_3" || intersects[0].object.name === "Poster_3") {
+      //          document.body.style.cursor = 'pointer';
+      //       }
+      //       if (intersects[0].object.name === "Monitor_Screen002") {
+      //           document.body.style.cursor = 'pointer';
+      //       }
+      //       if (intersects[0].object.name === "Monitor_2001") {
+      //           document.body.style.cursor = 'pointer';
+      //       }
+      //       if (intersects[0].object.name === "Comic") {
+      //           document.body.style.cursor = 'pointer';
+      //       }
+            
 
-      //    }
-      //    else{
-      //          //this.experience.renderer.outlinePass.selectedObjects=[];
-      //    }
-      // });
+      //     }
+          
+          
+      //  });
       window.addEventListener("click", (event) => {
          pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
          pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
